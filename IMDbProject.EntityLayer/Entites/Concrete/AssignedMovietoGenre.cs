@@ -19,7 +19,7 @@ namespace IMDbProject.EntityLayer.Entites.Concrete
 
         //---------- MOVİE---------------------
         [ForeignKey("Movie")]
-        public int MovieId { get; set; }           //Çoka çok ilişki için Movie tablo ile ilişkilendirmek için Id ForeingKey olarak işaretlendi
+        public int MovieId { get; set; } //Çoka çok ilişki için Movie tablo ile ilişkilendirmek için Id ForeingKey olarak işaretlendi
         public virtual Movie Movie { get; set; }
 
         //-------------------GENRE--------------

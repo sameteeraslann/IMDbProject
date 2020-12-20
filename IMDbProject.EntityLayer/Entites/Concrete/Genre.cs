@@ -23,6 +23,7 @@ namespace IMDbProject.EntityLayer.Entites.Concrete
         public DateTime? CreateDate { get ; set; }
         public DateTime? ModifiedDate { get; set; }
         public DateTime? PassivedDate { get; set; }
-        public Status Status { get; set; }
+        private Status _status = Status.Active;
+        public Status Status { get => _status; set => _status = value; }
     }
 }

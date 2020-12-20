@@ -14,6 +14,7 @@ namespace IMDbProject.EntityLayer.Entites.Inferfaces
         DateTime? ModifiedDate { get; set; }
         DateTime? PassivedDate { get; set; }
 
+        
         Status Status { get ; set; }
 
     }

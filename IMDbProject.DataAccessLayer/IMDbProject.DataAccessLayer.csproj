@@ -43,6 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,23 +56,21 @@
     <Compile Include="Context\ProjectContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Concrete\EfAppUserRepository.cs" />
+    <Compile Include="Repositories\Concrete\EfBaseRepository.cs" />
+    <Compile Include="Repositories\Concrete\EfGenreRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IAppUserRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IBaseRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IGenreRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Repositories\Concrete\" />
-    <Folder Include="Repositories\Interfaces\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\IMDbProject.EntityLayer\IMDbProject.EntityLayer.csproj">
       <Project>{800B4CAA-1DAF-4BE1-A018-928C4C6F6F14}</Project>
       <Name>IMDbProject.EntityLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IMDbProject.UI\IMDbProject.UI.csproj">
-      <Project>{dab21f3e-a2ac-4e21-87f1-b7ce4c1863e6}</Project>
-      <Name>IMDbProject.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

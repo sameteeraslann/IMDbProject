@@ -1,10 +1,5 @@
 ﻿using IMDbProject.EntityLayer.Entites.Concrete;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IMDbProject.DataAccessLayer.Context
 {
@@ -14,6 +9,7 @@ namespace IMDbProject.DataAccessLayer.Context
         {
             Database.Connection.ConnectionString = @"Server=DESKTOP-9CA7T86\MSQL;Database=IMDbProject;Integrated Security=True;";
         }
+
 
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<AssignedMovietoDirector> AssignedMovietoDirectors { get; set; }
