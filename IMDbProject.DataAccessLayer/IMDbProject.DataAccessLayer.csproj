@@ -59,9 +59,11 @@
     <Compile Include="Repositories\Concrete\EfAppUserRepository.cs" />
     <Compile Include="Repositories\Concrete\EfBaseRepository.cs" />
     <Compile Include="Repositories\Concrete\EfGenreRepository.cs" />
+    <Compile Include="Repositories\Concrete\EfMovieRepository.cs" />
     <Compile Include="Repositories\Interfaces\IAppUserRepository.cs" />
     <Compile Include="Repositories\Interfaces\IBaseRepository.cs" />
     <Compile Include="Repositories\Interfaces\IGenreRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IMovieRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

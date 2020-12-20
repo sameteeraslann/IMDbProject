@@ -28,13 +28,14 @@ namespace IMDbProject.EntityLayer.Entites.Concrete
         [Required]
         [MinLength(10)]
         [MaxLength(100)]
-        public string MovieReview { get; set; }
+        public string MovieReview { get; set; } // Film İçeriği
 
         public List<AssignedMovietoGenre> AssignedMovietoGenres { get; set; } 
         public List<AssignedMovietoDirector>  AssignedMovietoDirectors { get; set; }
         public DateTime? CreateDate { get; set; }
         public DateTime? ModifiedDate { get; set; }
         public DateTime? PassivedDate { get; set ; }
-        public Status Status { get; set; }
+        private Status _status = Status.Active;
+        public Status Status { get => _status; set => _status = value; }
     }
 }

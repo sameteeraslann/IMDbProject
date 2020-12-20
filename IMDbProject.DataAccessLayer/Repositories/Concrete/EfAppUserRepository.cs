@@ -13,13 +13,15 @@ namespace IMDbProject.DataAccessLayer.Repositories.Concrete
         public List<AppUser> CallbyName(string fullname)
         {
             // FirstName üzerinden arama yaptığımızda girilen harfleri hem küçük karakterlere çevirir hemde girilen karater kadar arama yapar ve listeler.
-            return db.AppUsers.Where(x => x.FirstName.ToLower().Contains(fullname.ToLower())).ToList();
+            return db.AppUsers.Where(x => x.FirstName.ToLower().Contains(fullname.ToLower()) && x.Status != Status.Passive).ToList();
         }
         static int id;
-        public static void KayitSatiriSec(TextBox txtfirstname, TextBox txtlastname, TextBox txtusername,TextBox txtpassword,DataGridView dataGridView)
+        public static void KayitSatiriSec(TextBox txtFindById, TextBox txtfirstname, TextBox txtlastname, TextBox txtusername,TextBox txtpassword,DataGridView dataGridView)
         {
             // Burada datagridview de seçtiğimiz satırı Textboxlara dolduracak.
+
             id = Convert.ToInt32(dataGridView.CurrentRow.Cells["Id"].Value);
+            txtFindById.Text = dataGridView.CurrentRow.Cells["Id"].Value.ToString();
             txtfirstname.Text = dataGridView.CurrentRow.Cells["FirstName"].Value.ToString();
             txtlastname.Text = dataGridView.CurrentRow.Cells["LastName"].Value.ToString();
             txtusername.Text = dataGridView.CurrentRow.Cells["UserName"].Value.ToString();
@@ -28,16 +30,14 @@ namespace IMDbProject.DataAccessLayer.Repositories.Concrete
 
         public void CreateAppUser(string firstName, string lastName, string userName, string password, Role role)
         {
-            AppUser appUser = new AppUser 
-            {
-                FirstName = firstName,
-                LastName = lastName,
-                UserName = userName,
-                Password = password,
-                Role = role,
-                CreateDate = DateTime.Now,
-            };
-           
+            
+            AppUser appUser = new AppUser();
+            appUser.FirstName = firstName;
+            appUser.LastName = lastName;
+            appUser.UserName = userName;
+            appUser.Password = password;
+            appUser.Role = role;
+            appUser.CreateDate = DateTime.Now;
             db.AppUsers.Add(appUser);
             db.SaveChanges();
 
@@ -99,10 +99,10 @@ namespace IMDbProject.DataAccessLayer.Repositories.Concrete
             return db.AppUsers.Where(x => x.Status != Status.Passive).ToList();
         }
 
-        public void ModifiedAppUser(string name, string firstName, string lastName, string userName, string password, Role role)
+        public void ModifiedAppUser(int id, string firstName, string lastName, string userName, string password, Role role)
         {
             AppUser appUser = new AppUser();
-            appUser = db.AppUsers.FirstOrDefault(x => x.FirstName == name);
+            appUser = db.AppUsers.FirstOrDefault(x => x.Id == id);
             appUser.FirstName = firstName;
             appUser.LastName = lastName;
             appUser.UserName = userName;
@@ -113,13 +113,25 @@ namespace IMDbProject.DataAccessLayer.Repositories.Concrete
             db.SaveChanges();
         }
 
-        public void PassiveAppUser(string name)
+        public void PassiveAppUser(int id)
         {
             AppUser appUser = new AppUser();
-            appUser = db.AppUsers.FirstOrDefault(x => x.FirstName == name);
+            appUser = db.AppUsers.FirstOrDefault(x => x.Id == id);
             appUser.PassivedDate = DateTime.Now;
             appUser.Status = Status.Passive;
             db.SaveChanges();
+        }
+
+        public void Bosmu(GroupBox groupBox, Label lblFirst, Label lblLast, Label lblUser, Label lblPassword)
+        {
+            string message = "Lütfen boş alanları doldurun";
+            foreach (Control item in groupBox.Controls)
+            {
+                if (String.IsNullOrEmpty(item.Text))
+                {
+                  
+                }
+            }
         }
     }
 }

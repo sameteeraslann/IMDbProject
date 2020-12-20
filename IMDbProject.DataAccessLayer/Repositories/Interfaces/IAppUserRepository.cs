@@ -8,8 +8,9 @@ namespace IMDbProject.DataAccessLayer.Repositories.Interfaces
     public interface IAppUserRepository
     {
         void CreateAppUser(string firstName, string lastName, string userName, string password, Role role);
-        void ModifiedAppUser(string name, string firstName, string lastName, string userName, string password, Role role);
-        void PassiveAppUser(string name);
+        void ModifiedAppUser(int id, string firstName, string lastName, string userName, string password, Role role);
+        void PassiveAppUser(int id);
+        void Bosmu(GroupBox groupBox,Label lblFirst,Label lblLast,Label lblUser,Label lblPassword);
        
         void GetRole(ComboBox comboBox); 
        

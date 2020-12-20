@@ -36,7 +36,7 @@ namespace IMDbProject.UI
 
         private void btnSil_Click(object sender, EventArgs e)
         {
-            efAppUser.PassiveAppUser(txtFirstName.Text);
+            efAppUser.PassiveAppUser(int.Parse(txtFindById.Text));
             dataGridView1.DataSource = efAppUser.GetUser();
             efAppUser.Eraser(grpAddUser);
         }
@@ -49,7 +49,7 @@ namespace IMDbProject.UI
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
             efAppUser.ModifiedAppUser(
-                txtFirstName.Text,
+                int.Parse(txtFindById.Text),
                 txtFirstName.Text,
                 txtLastName.Text,
                 txtUserName.Text,
@@ -65,11 +65,18 @@ namespace IMDbProject.UI
             efAppUser.Eraser(grpAddUser);
             efAppUser.GetRole(cmbRol);
             dataGridView1.DataSource = efAppUser.GetUser();
+           
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            EfAppUserRepository.KayitSatiriSec(txtFirstName, txtLastName, txtUserName, txtPassword, dataGridView1);
+            EfAppUserRepository.KayitSatiriSec(txtFindById, txtFirstName, txtLastName, txtUserName, txtPassword, dataGridView1);
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
+
